@@ -1,0 +1,16 @@
+// Internal global constants that will be used throughout our Sass code. These
+// are not variables that should be changed by users of this framework.
+
+$css-directions: (
+  t: top,
+  r: right,
+  b: bottom,
+  l: left,
+  x: (left, right),
+  y: (top, bottom),
+);
+
+$spacing-types: (
+  m: margin,
+  p: padding,
+);

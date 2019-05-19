@@ -10,7 +10,7 @@
             border: none !important;
         }
 
-        @each $d_abbv, $rules in $spacing_directions {
+        @each $d_abbv, $rules in $css-directions {
             .border#{$infix}-#{$d-abbv} {
                 @each $rule in $rules {
                     border-#{$rule}: $border-default !important;

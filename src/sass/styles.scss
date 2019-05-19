@@ -1,36 +1,32 @@
----
-permalink: /assets/css/styles.css
----
-
-// Core functions required by internal Sass functions to return Sass values
+// Core functions required by our internal Sass functions to return Sass values.
+// These functions do not rely on any of our constants or variables.
 @import 'abstracts/functions/math';
 @import 'abstracts/functions/strings';
 
+// Constants and variables used throughout
+@import 'abstracts/constants';
 @import 'abstracts/variables';
 
 // Functions charged with return CSS values
 @import 'abstracts/functions/assets';
 @import 'abstracts/functions/gradients';
 
-@import 'abstracts/mixins';
+@import 'abstracts/mixins/a11y';
+@import 'abstracts/mixins/positioning';
+@import 'abstracts/mixins/responsive';
+@import 'abstracts/mixins/spacing';
+@import 'abstracts/mixins/typography';
 
 @import 'vendor/bootstrap-reboot';
 @import 'vendor/bootstrap';
-@import 'vendor/plyr';
-@import 'vendor/highlightjs/monokai';
-@import 'vendor/photoswipe/main';
-@import 'vendor/photoswipe/default-skin/default-skin';
 
 @import 'layout/backgrounds';
 @import 'layout/base';
-@import 'layout/documentation';
 @import 'layout/footer';
 @import 'layout/hamburger';
 @import 'layout/header';
 @import 'layout/jumbotron';
 @import 'layout/navigation';
-@import 'layout/sidebar-layout';
-@import 'layout/site-search';
 
 @import 'components/accordion';
 @import 'components/alert';
@@ -39,19 +35,12 @@ permalink: /assets/css/styles.css
 @import 'components/form';
 @import 'components/heading-group';
 @import 'components/hover-card';
-@import 'components/keyboard';
 @import 'components/media';
-@import 'components/mouse';
-@import 'components/page-split';
-@import 'components/parameter-table';
-@import 'components/search-result';
 @import 'components/table';
 @import 'components/terminal';
 @import 'components/theater';
 @import 'components/video-player';
 @import 'components/well';
-
-@import 'pages/getting-started';
 
 @import 'utilities/border-helpers';
 @import 'utilities/os';

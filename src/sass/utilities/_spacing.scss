@@ -1,4 +1,4 @@
-@each $t_abbv, $type in $spacing_types {
+@each $t_abbv, $type in $spacing-types {
     @each $bp in map-keys($breakpoints) {
         $breakpoint: $bp;
 
@@ -10,7 +10,7 @@
                     #{$type}: $value !important;
                 }
 
-                @each $d_abbv, $rules in $spacing_directions {
+                @each $d_abbv, $rules in $css-directions {
                     .#{$t_abbv}#{$d_abbv}#{$infix}-#{$s_abbv} {
                         @each $rule in $rules {
                             #{$type}-#{$rule}: $value !important;
