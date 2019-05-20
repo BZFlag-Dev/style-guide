@@ -1,12 +1,5 @@
 table {
-    @include margin(x, auto);
-
     border-collapse: collapse;
-    width: 100%;
-
-    @include respond-up(lg) {
-        width: 90%;
-    }
 
     thead tr {
         background-color: rgba(#000, 0.2);
@@ -37,6 +30,15 @@ table {
 
         &:nth-child(even) {
             background-color: rgba(#fff, 0.05);
+        }
+    }
+}
+
+table {
+    &.table--skinny {
+        td, th {
+            @include padding(x, 2);
+            @include padding(y, 1);
         }
     }
 }
