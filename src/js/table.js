@@ -49,10 +49,24 @@
                 });
 
                 this._element.dispatchEvent(event);
+                this._updateHeaders();
                 this._sortTable();
             });
         }
     }
+
+    SortableTable.prototype._updateHeaders = function() {
+        const colHeaders = this._element.tHead.rows[0];
+        const headers = colHeaders.querySelectorAll('[data-sort]');
+
+        if (headers) {
+            for (let i = 0; i < headers.length; i++) {
+                headers[i].removeAttribute('data-sort');
+            }
+        }
+
+        colHeaders.cells[this._columnNum].setAttribute('data-sort', this._ascending ? 'ASC' : 'DESC');
+    };
 
     SortableTable.prototype._sortTable = function() {
         const body = this._element.tBodies;
