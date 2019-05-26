@@ -1,0 +1,50 @@
+.tabs {
+}
+
+.tabs__header {
+    button {
+        @include css-outline();
+        @include margin(r, 1);
+        @include padding(x, 3);
+        @include padding(y, 1);
+
+        background: $background-dark;
+        border: $border-default;
+        border-bottom: 0;
+        color: $color-text-primary;
+        position: relative;
+
+        &[aria-selected='true'] {
+            background: $color-primary;
+
+            &::before,
+            &::after {
+                border: 1px solid transparent;
+                content: '';
+                display: block;
+                left: 0;
+                position: absolute;
+                width: 100%;
+            }
+
+            &::before {
+                border-color: orange;
+                top: 0;
+            }
+
+            // Negative so we can emulate the effect of a tab connecting smoothly
+            // with the tab body.
+            &::after {
+                border-color: $color-primary;
+                bottom: -1px;
+            }
+        }
+    }
+}
+
+.tabs__tab {
+    @include padding(null, 3);
+
+    background: $color-primary;
+    border: $border-default;
+}

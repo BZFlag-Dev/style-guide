@@ -1,3 +1,5 @@
+'use strict';
+
 (function() {
     const SORT_EVENT = 'bzflag:sort';
 
