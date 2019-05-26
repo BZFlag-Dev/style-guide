@@ -1,0 +1,18 @@
+// Core functions required by our internal Sass functions to return Sass values.
+// These functions do not rely on any of our constants or variables.
+@import 'abstracts/functions/math';
+@import 'abstracts/functions/strings';
+
+// Constants and variables used throughout
+@import 'abstracts/constants';
+@import 'abstracts/variables';
+
+// Functions charged with return CSS values
+@import 'abstracts/functions/assets';
+@import 'abstracts/functions/gradients';
+
+@import 'abstracts/mixins/a11y';
+@import 'abstracts/mixins/positioning';
+@import 'abstracts/mixins/responsive';
+@import 'abstracts/mixins/spacing';
+@import 'abstracts/mixins/typography';
