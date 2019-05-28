@@ -1,0 +1,18 @@
+@each $team, $color in $team-colors {
+    .color-#{$team}-team {
+        color: $color;
+        text-shadow: 0 0 0 $color;
+    }
+
+    .color-blind-mode-enabled {
+        .color-#{$team}-team {
+            color: $color-text-primary;
+
+            &::after {
+                content: '(#{$team})';
+                font-size: 0.7rem;
+                text-transform: capitalize;
+            }
+        }
+    }
+}
