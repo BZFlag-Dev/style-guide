@@ -1,7 +1,7 @@
 'use strict';
 
 (function() {
-    const SORT_EVENT = 'bzflag:sort';
+    const SORT_EVENT = 'bzflag:table:sort';
 
     /**
      * @constructor
@@ -40,23 +40,66 @@
                 caseInsensitive: colHeader.getAttribute('data-sort-case-insensitive') === 'true',
             };
 
+            if (colHeader.hasAttribute('data-sort-default')) {
+                this._sortByColumn(i, colHeader);
+            }
+
             colHeader.addEventListener('click', () => {
-                this._ascending = !this._ascending;
-                this._columnNum = i;
-
-                const event = new CustomEvent(SORT_EVENT, {
-                    columnNum: i,
-                    columnName: colHeader.textContent,
-                    ascending: !this._ascending,
-                });
-
-                this._element.dispatchEvent(event);
-                this._updateHeaders();
-                this._sortTable();
+                this._sortByColumn(i, colHeader);
             });
         }
     }
 
+    /**
+     * Does the given value represent an ascending switch?
+     *
+     * @private
+     *
+     * @param {string|null} value The value to check for
+     *
+     * @returns {boolean} True if it is ascending
+     */
+    SortableTable.prototype._isAscending = function (value) {
+        if (!value) {
+            return false;
+        }
+
+        return (value.toLocaleLowerCase() === 'asc')
+    };
+
+    /**
+     * Sort the table by the given column.
+     *
+     * @private
+     *
+     * @param {int} index The index of this column that we'll be sorting by
+     * @param {HTMLTableHeaderCellElement} colHeader The node of the column we're sorting by
+     */
+    SortableTable.prototype._sortByColumn = function(index, colHeader) {
+        if (this._columnNum === null && colHeader.hasAttribute('data-sort')) {
+            this._ascending = this._isAscending(colHeader.getAttribute('data-sort'));
+        } else if (this._columnNum === index) {
+            this._ascending = !this._ascending;
+        }
+
+        this._columnNum = index;
+
+        const event = new CustomEvent(SORT_EVENT, {
+            columnNum: index,
+            columnName: colHeader.textContent,
+            ascending: !this._ascending,
+        });
+
+        this._element.dispatchEvent(event);
+        this._updateHeaders();
+        this._sortTable();
+    };
+
+    /**
+     * Update the table headers with new sorting order and selected column.
+     *
+     * @private
+     */
     SortableTable.prototype._updateHeaders = function() {
         const colHeaders = this._element.tHead.rows[0];
         const headers = colHeaders.querySelectorAll('[data-sort]');
@@ -70,6 +113,11 @@
         colHeaders.cells[this._columnNum].setAttribute('data-sort', this._ascending ? 'ASC' : 'DESC');
     };
 
+    /**
+     * Perform the actual sorting operation by changing the order of rows.
+     *
+     * @private
+     */
     SortableTable.prototype._sortTable = function() {
         const body = this._element.tBodies;
 
