@@ -38,6 +38,17 @@ table {
             background-color: rgba(#fff, 0.05);
         }
     }
+
+    caption {
+        @include font-size(small);
+        @include padding(null, 3);
+        @include padding(null, 2, md);
+
+        background: $background-dark;
+        border-top: $border-default;
+        caption-side: bottom;
+        color: rgba($color-text-primary, 0.7);
+    }
 }
 
 table.table--skinny {
