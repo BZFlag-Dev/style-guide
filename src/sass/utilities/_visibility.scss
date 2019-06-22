@@ -6,8 +6,17 @@
     }
 
     .show-#{$breakpoint} {
+        $cls: #{&};
+
         @include respond-up($breakpoint) {
-            display: block !important;
+            display: unset !important;
+
+            // Special behavior for showing table cells after they were hidden
+            @at-root td, th {
+                &#{$cls} {
+                    display: table-cell !important;
+                }
+            }
         }
     }
 }
