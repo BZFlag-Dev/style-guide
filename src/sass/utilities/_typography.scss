@@ -33,3 +33,26 @@ strong,
 .text-muted {
     @include text-muted(true);
 }
+
+// Wrap a text element with square brackets visually so screen readers will not
+// read them out loud.
+.wrap-brackets {
+    &::before {
+        content: '[';
+    }
+
+    &::after {
+        content: ']';
+    }
+}
+
+// Wrap a text with parentheses visually
+.wrap-parentheses {
+    &::before {
+        content: '(';
+    }
+
+    &::after {
+        content: ')';
+    }
+}
