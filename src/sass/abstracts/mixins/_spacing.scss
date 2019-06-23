@@ -10,16 +10,22 @@
 /// @param {String} $breakpoint 'xs', 'sm', 'md', 'lg', 'xl'
 ///
 @mixin _spacing($space_type, $direction, $value, $breakpoint) {
-  @include respond-up($breakpoint) {
-    @if $direction == null {
-      #{$space_type}: map-get($spacing, $value);
+    @include respond-up($breakpoint) {
+        $step: if(type-of($value) == 'number', abs($value), $value);
+        $result: map-get($spacing, $step);
+
+        @if $space_type == 'margin' and $value < 0 {
+            $result: $result * -1;
+        }
+
+        @if $direction == null {
+            #{$space_type}: $result;
+        } @else {
+            @each $direction in map-get($css-directions, $direction) {
+                #{$space_type}-#{$direction}: $result;
+            }
+        }
     }
-    @else {
-      @each $direction in map-get($css-directions, $direction) {
-        #{$space_type}-#{$direction}: map-get($spacing, $value);
-      }
-    }
-  }
 }
 
 ///
@@ -34,7 +40,7 @@
 /// @param {String} $breakpoint 'xs', 'sm', 'md', 'lg', 'xl'
 ///
 @mixin margin($direction: null, $value: 0, $breakpoint: xs) {
-  @include _spacing('margin', $direction, $value, $breakpoint);
+    @include _spacing('margin', $direction, $value, $breakpoint);
 }
 
 ///
@@ -49,5 +55,5 @@
 /// @param {String} $breakpoint 'xs', 'sm', 'md', 'lg', 'xl'
 ///
 @mixin padding($direction: null, $value: 0, $breakpoint: xs) {
-  @include _spacing('padding', $direction, $value, $breakpoint);
+    @include _spacing('padding', $direction, $value, $breakpoint);
 }
