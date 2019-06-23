@@ -4,7 +4,9 @@
     z-index: 10;
 }
 
-.site-header {
+.site-header-wrapper {
+    @include padding(y, 3);
+
     background: $color-dark;
     width: 100%;
     z-index: 1;
@@ -14,7 +16,21 @@
     }
 }
 
+.site-header {
+    @extend .row;
+
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+
+    @include respond-up(lg) {
+        flex-direction: row;
+    }
+}
+
 .site-header__brand {
+    @extend .col-lg-auto;
+
     align-items: center;
     display: flex;
 
@@ -33,7 +49,7 @@
 }
 
 // Only use a fancy gradient when
-.page-jumbotron .site-header {
+.page-jumbotron .site-header-wrapper {
     position: absolute;
 
     @include respond-up(lg) {

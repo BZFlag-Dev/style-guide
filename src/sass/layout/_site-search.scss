@@ -7,6 +7,7 @@
 .site-search__form {
     display: -ms-flexbox;
     display: flex;
+    position: relative;
 
     @include respond-down(lg) {
         @include padding(y, 3);
@@ -15,22 +16,26 @@
 
 .site-search__label {
     cursor: pointer;
+    left: 5px;
     margin: 0;
+    position: absolute;
+
+    @include respond-up(lg) {
+        position: static;
+    }
 }
 
 .site-search__input {
+    @include padding(l, 4);
+    @include padding(y, 1);
+
     background-color: $color-primary;
     border: 0;
-    border-bottom: $border-default;
     border-radius: $border-radius;
     color: $color-text-primary;
     font-size: 0.9rem;
     flex-grow: 1;
     transition: 0.4s width;
-
-    @include respond-down(lg) {
-        @include margin(l, 2);
-    }
 
     @include respond-up(lg) {
         padding: 0;
@@ -59,6 +64,11 @@
 }
 
 .site-search__icon {
-    height: 18px;
-    width: 18px;
+    height: 16px;
+    width: 16px;
+
+    @include respond-up(lg) {
+        height: 18px;
+        width: 18px;
+    }
 }

@@ -16,6 +16,8 @@ $_default-nav-breakpoint: 'lg';
 }
 
 .site-navigation {
+    @extend .col-lg;
+
     text-align: right;
 }
 
@@ -48,6 +50,14 @@ $_default-nav-breakpoint: 'lg';
             display: inline-block;
             font-size: 1.1em;
             margin-left: 15px;
+        }
+
+        &:last-child {
+            a {
+                @include respond-down($_default-nav-breakpoint) {
+                    padding-bottom: 0;
+                }
+            }
         }
     }
 
