@@ -2,6 +2,13 @@
 }
 
 .tabs__header {
+    @include margin(null, -1);
+    @include padding(null, 1);
+
+    overflow-x: auto;
+    overflow-y: visible;
+    white-space: nowrap;
+
     button {
         @include css-outline();
         @include margin(r, 1);
@@ -13,6 +20,16 @@
         border-bottom: 0;
         color: $color-text-primary;
         position: relative;
+        white-space: nowrap;
+        width: 40%;
+
+        @include respond-up(md) {
+            width: 30%;
+        }
+
+        @include respond-up(lg) {
+            width: auto;
+        }
 
         &[aria-selected='true'] {
             background: $color-primary;
@@ -38,6 +55,10 @@
                 border-color: $color-primary;
                 bottom: -1px;
             }
+        }
+
+        &:last-of-type {
+            margin-right: 0;
         }
     }
 }
