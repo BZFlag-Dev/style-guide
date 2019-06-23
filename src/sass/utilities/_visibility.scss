@@ -32,3 +32,8 @@
 .sr-only-focusable {
     @include sr-only-focusable();
 }
+
+.disable-a11y .sr-only,
+.disable-a11y .sr-only-focusable {
+    display: none;
+}
