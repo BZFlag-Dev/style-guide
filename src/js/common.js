@@ -11,6 +11,18 @@ export function indexLoop(array, index) {
     return realIndex;
 }
 
+/**
+ * Toggle a string boolean on an element.
+ *
+ * @param {Element} element
+ * @param {string} attribute
+ */
+export function toggleBooleanString(element, attribute) {
+    const value = element.getAttribute(attribute);
+
+    element.setAttribute(attribute, value === 'true' ? 'false' : 'true');
+}
+
 const keyboard = {
     TAB: 9,
     ENTER: 13,
