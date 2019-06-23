@@ -8,8 +8,8 @@
         .color-#{$team}-team {
             color: $color-text-primary;
 
-            &::after {
-                content: '(#{$team})';
+            &:not(.no-cb-translation)::after {
+                content: ' (#{$team})';
                 font-size: 0.7rem;
                 text-transform: capitalize;
             }
