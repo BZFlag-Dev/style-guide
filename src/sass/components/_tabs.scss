@@ -19,16 +19,16 @@
         border: $border-default;
         border-bottom: 0;
         color: $color-text-primary;
+        min-width: 40%;
         position: relative;
         white-space: nowrap;
-        width: 40%;
 
         @include respond-up(md) {
-            width: 30%;
+            min-width: 30%;
         }
 
         @include respond-up(lg) {
-            width: auto;
+            min-width: 0;
         }
 
         &[aria-selected='true'] {
