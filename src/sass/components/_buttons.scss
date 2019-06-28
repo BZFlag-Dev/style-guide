@@ -28,6 +28,10 @@
     @include padding(y, 1);
 }
 
+.c-button--no-shadow {
+    box-shadow: none;
+}
+
 .c-button-group {
     .c-button {
         background-color: transparent;
