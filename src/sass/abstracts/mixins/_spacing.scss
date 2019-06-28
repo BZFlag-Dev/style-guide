@@ -11,10 +11,11 @@
 ///
 @mixin _spacing($space_type, $direction, $value, $breakpoint) {
     @include respond-up($breakpoint) {
-        $step: if(type-of($value) == 'number', abs($value), $value);
+        $is-num: type-of($value) == 'number';
+        $step: if($is-num, abs($value), $value);
         $result: map-get($spacing, $step);
 
-        @if $space_type == 'margin' and $value < 0 {
+        @if $space_type == 'margin' and $is-num and $value < 0 {
             $result: $result * -1;
         }
 
