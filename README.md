@@ -2,7 +2,9 @@
 
 > :warning: :construction: **WARNING** :construction: :warning:
 >
-> This is an experimental project and is not ready to be used in production. While this project is under heavy development, things will change drastically and will break often. Use this project at your own risk!
+> This project is under heavy development; things will change drastically and will break often.
+> 
+> This project is not ready for production use. Use at your own risk!
 
 This is BZFlag's official front-end framework used for a consistent look and feel across official project websites; think Bootstrap but stylized and built specifically for the project.
 
