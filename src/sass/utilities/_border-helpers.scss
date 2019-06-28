@@ -10,6 +10,14 @@
             border: none !important;
         }
 
+        .border#{$infix}-rounded {
+            border-radius: $border-radius !important;
+        }
+
+        .border#{$infix}-not-rounded {
+            border-radius: 0;
+        }
+
         @each $d_abbv, $rules in $css-directions {
             .border#{$infix}-#{$d-abbv} {
                 @each $rule in $rules {
