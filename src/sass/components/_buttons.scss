@@ -9,7 +9,7 @@
     @include padding(x, 4);
     @include padding(y, 2);
 
-    color: $color-primary;
+    color: $color-dark;
     text-decoration: none;
 
     &:focus,
@@ -33,6 +33,8 @@
 }
 
 .c-button-group {
+    display: inline-flex;
+
     .c-button {
         background-color: transparent;
         border-radius: 0;
@@ -51,7 +53,7 @@ a {
         &,
         &:focus,
         &:hover {
-            color: $color-primary;
+            color: $color-dark;
             text-decoration: none;
         }
     }
@@ -61,6 +63,18 @@ a {
         &:focus,
         &:hover {
             color: $color-text-anchor;
+        }
+    }
+}
+
+button {
+    &.c-button {
+        border: none;
+
+        &[disabled] {
+            background: rgba(#fff, 0.3);
+            color: #565656;
+            cursor: not-allowed;
         }
     }
 }
